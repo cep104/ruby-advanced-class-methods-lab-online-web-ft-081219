@@ -32,14 +32,17 @@ class Song
   def self.find_by_name(name)
     self.all.find{|song| song.name == name}
   end
+  
   def self.find_or_create_by_name(name)
     self.find_by_name(name) || self.create_by_name(name)
   end
+  
   def self.alphabetical
     self.all.sort_by{|song| song.name}
   end
-  def self.new_from_filename(name)
-   row = name
+  
+  def self.new_from_filename(file_name)
+   row = file_name
       data = row.split(" - ")
       artist_name = data[0]
       song_name = data[1].chomp(".mp3")#.chomp deletes at the end of string 
@@ -48,4 +51,8 @@ class Song
      song.artist_name = artist_name
      song
   end
+  
+  def self.create_from_filename(file_name)
+    self.new_from_filename
+    self.create_from_filename
 end
