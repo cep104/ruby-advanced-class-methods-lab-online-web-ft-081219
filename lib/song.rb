@@ -45,6 +45,8 @@ class Song
   # data = name.split(/[.-]/)
   name = data[0]
   artists_name = [1]
+  new_song.save
+    new_song
 # end
   end
 end
