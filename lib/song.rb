@@ -38,15 +38,15 @@ class Song
   def self.alphabetical
     self.all.sort_by{|song| song.name}
   end
-  def self.new_from_filename(song)
-   new_song = self.new
-    data = song.split(/[.-]/)
-  #   songs = rows.collect do |name|
-  # data = name.split(/[.-]/)
-  name = data[0]
-  artists_name = [1]
-  new_song.save
-    new_song
-# end
+  def self.new_from_filename(name)
+   row = name
+      data = row.split(" - ")
+      artist_name = data[0]
+      song_name = data[1].gsub(".mp3", "")
+
+    song = self.new
+    song.name = song_name
+    song.artist_name = artist_name
+    song
   end
 end
